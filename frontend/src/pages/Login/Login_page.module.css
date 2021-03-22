@@ -1,18 +1,17 @@
 .backgroundContainer{
     background-color: #052C65;
-    min-height: 100hv;
-    min-width: 100wv;
+    min-height: 100vh;
+    min-width: 100vw;
 }
+
+
 
 .pictureContainer{
     height: 830px;
     min-width: 800px;
-    background: url(../../assets/images/login_screen.svg);
     background-color: white;
     display: flex;
     background-size:auto;
-    justify-content: center;
-    align-items: center;
     border-radius: 10px 0 0 10px;
 
 }
@@ -23,21 +22,22 @@
     border-radius: 0 10px 10px 0;
 }
 
-.logo{
-    height: 120px;
-    padding: 5px 5px;
-    background: url(../../assets/images/logo_black.svg);
-    background-size: cover;
+.logoContainer{
+    margin: 60px 15px 200px 15px;
+}
+
+.formLogin{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.formLogin{
     background-color: #EEEFF2;
     border-radius: 4px;
 }
 .loginFooter{
     background-color: #F9A826;
     border-radius: 0px 0px 4px 4px;
+    width: 100%;
 }
 h2{
     font-family: Inter;

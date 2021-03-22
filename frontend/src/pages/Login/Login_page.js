@@ -1,21 +1,29 @@
 import React from 'react';
 import styles from './Login_page.module.css';
+import loginImg from '../../assets/images/login_screen.svg'
+import logo from '../../assets/images/logo_black.svg'
 
 export default function Login() {
     return (
         <div className={styles.backgroundContainer}>
-            <div className="container d-flex flex-row p-4">
+            <div className={`${styles.loginContainer} container d-flex flex-row p-4`}>
                 <div className={`${styles.pictureContainer} container`}>
+                    <img 
+                        src={loginImg}
+                        className="img-fluid" />
                 </div>
-                <div className={`${styles.formContainer} container`}>
-                    <div className={styles.logo}>
+                <div className={`${styles.formContainer} container flex-column`}>
+                    <div className={`${styles.logoContainer}`} >
+                        <img 
+                            src={logo}
+                            className={`${logo} img-fluid `} />
                     </div>
-                    <div className={styles.formLogin}>
-                        <h2>Sign in!</h2>
-                        <div className="loginForm">
-                            <input className="form-control"></input>
-                            <input className="form-control"></input>
-                            <button className="btn btn-primary pl-5 pr-5">Login</button>
+                    <div className={`${styles.formLogin} align-self-end`}>
+                        <h2 className="mt-3">Sign in!</h2>
+                        <div className="">
+                            <input className="form-control mt-5"></input>
+                            <input className="form-control mt-2"></input>
+                            <button className="btn btn-primary mt-5 mb-3 pl-5 pr-5">Login</button>
                         </div>
                         <div className={`${styles.loginFooter} d-flex flex-row`}>
                             <h3 className="p-2">Not a member?</h3>
