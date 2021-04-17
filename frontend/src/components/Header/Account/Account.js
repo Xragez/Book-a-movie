@@ -4,7 +4,7 @@ import styles from './Account.module.css';
 function Account(){
     return (
         <div className={`${styles.account}`}>
-            <a className="btn btn-dark">Sign in</a>
+            <a className="btn btn-dark mr-3">Sign in</a>
         </div>
     );
 }

@@ -4,8 +4,6 @@
     min-width: 100vw;
 }
 
-
-
 .pictureContainer{
     height: 830px;
     min-width: 800px;
@@ -16,8 +14,8 @@
 
 }
 .formContainer{
-    width: 300px;
-    min-width: 300px;
+    width: 400px;
+    min-width: 400px;
     background-color: #7193A3;
     border-radius: 0 10px 10px 0;
 }
@@ -40,22 +38,8 @@
     width: 100%;
 }
 h2{
-    font-family: Inter;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 48px;
-    letter-spacing: -0.02em;
     color: #004CC5;
 }
 h3{
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 24px;
-    line-height: 29px;
-    display: flex;
-    align-items: center;
-
     color: #000000;
 }

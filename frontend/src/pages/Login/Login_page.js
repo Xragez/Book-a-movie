@@ -20,13 +20,15 @@ export default function Login() {
                     </div>
                     <div className={`${styles.formLogin} align-self-end`}>
                         <h2 className="mt-3">Sign in!</h2>
-                        <div className="">
+                        <div className="justify-content-center">
                             <input className="form-control mt-5"></input>
-                            <input className="form-control mt-2"></input>
+                            <input className="form-control mt-3"></input>
+                            <div className="d-flex justify-content-center">
                             <button className="btn btn-primary mt-5 mb-3 pl-5 pr-5">Login</button>
+                            </div>
                         </div>
-                        <div className={`${styles.loginFooter} d-flex flex-row`}>
-                            <h3 className="p-2">Not a member?</h3>
+                        <div className={`${styles.loginFooter} d-flex flex-row justify-content-center align-items-center `}>
+                            <h4 className="p-2">Not a member?</h4>
                             <a className="p-2">Sing up.</a>
                         </div>
                     </div>

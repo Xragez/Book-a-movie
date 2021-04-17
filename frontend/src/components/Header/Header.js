@@ -7,7 +7,7 @@ import Account from './Account/Account';
 function Header(){
     return (
         <header className={`${styles.header} d-flex justify-content-between align-items-center`}>
-            <Logo className="float-left " />
+            <Logo className="float-left ml-3" />
             <Searchbar className=""/>
             <Account className="float-right" />
         </header>
