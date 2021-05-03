@@ -1,76 +1,78 @@
 <?php
 
-
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="users")
- * @ORM\Entity()
+ * @ApiResource()
+ * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Table(name="`user`")
  */
 class User
 {
-
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id()
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private $id;
+
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="email", type="string", length=100)
-     */
-    private $email;
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="user_name", type="string", length=100)
+     * @ORM\Column(type="string", length=100)
      */
     private $userName;
 
     /**
-     * @return string|null
+     * @ORM\Column(type="string", length=100)
      */
-    public function getId(): ?string
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $password;
+
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string|null $email
-     */
-    public function setEmail(?string $email): void
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getUserName(): ?string
     {
         return $this->userName;
     }
 
-    /**
-     * @param string|null $userName
-     */
-    public function setUserName(?string $userName): void
+    public function setUserName(string $userName): self
     {
         $this->userName = $userName;
+
+        return $this;
     }
 
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
 }
