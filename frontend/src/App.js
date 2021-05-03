@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import Login from './pages/Login/Login_page';
+import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import './App.css';
 import {
@@ -21,6 +21,7 @@ function App() {
             <Home/>
           </Route>
         </Switch>
+         
       </Router>
     </div>
   );

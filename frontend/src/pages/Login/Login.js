@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from './Login_page.module.css';
+import styles from './Login.module.css';
 import loginImg from '../../assets/images/login_screen.svg'
 import logo from '../../assets/images/logo_black.svg'
+import Button from '../../components/fundamental/actions/button/Button';
 
 export default function Login() {
     return (
@@ -24,7 +25,7 @@ export default function Login() {
                             <input className="form-control mt-5"></input>
                             <input className="form-control mt-3"></input>
                             <div className="d-flex justify-content-center">
-                            <button className="btn btn-primary mt-5 mb-3 pl-5 pr-5">Login</button>
+                            <Button>Login</Button>
                             </div>
                         </div>
                         <div className={`${styles.loginFooter} d-flex flex-row justify-content-center align-items-center `}>
