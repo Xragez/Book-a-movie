@@ -6,3 +6,10 @@
 .poster{
     max-width: 200px;
 }
+.title{
+    max-width: 200px;
+    text-align: center;
+}
+.link{
+    width: 100%;
+}
