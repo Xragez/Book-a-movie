@@ -13,10 +13,12 @@ function Movies(props) {
 
     const optionsMovies = {
         method: 'GET',
-        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${props.sortBy}&include_adult=false&include_video=false&vote_count.gte=100`
+        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}` +
+             `&language=en-US&sort_by=${props.sortBy}&include_adult=false&include_video=false` + 
+             `${props.vote_count ? `&vote_count.gte=${props.vote_count}` : ''}`
       };
     
-    const fetchMovies = () => {   
+    const fetchMovies = async () => {   
         axios.request(optionsMovies).then(function (response) {
             setMovies(response.data.results);
             console.log(response.data.results);
@@ -42,8 +44,8 @@ function Movies(props) {
         <div className="mt-3 ml-3">
             <h3 className={styles.title}>{props.title}</h3>
             <div className="row">
-                {movies.splice(0, 5).map(movie =>
-                    <Movie title={movie.title} rating={movie.vote_average} posterUrl={movie.poster_path} id={movie.id}/>
+                {movies.map(movie =>
+                    <Movie title={movie.title} rating={movie.vote_average} posterUrl={movie.poster_path} id={movie.id} key={movie.id}/>
                 )}
             </div>
         </div>

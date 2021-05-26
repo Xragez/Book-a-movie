@@ -11,5 +11,8 @@
     text-align: center;
 }
 .link{
-    width: 100%;
+    width: min-content;
+}
+.container{
+    width: fit-content;
 }
