@@ -1,0 +1,66 @@
+import React, { useState } from 'react'
+import styles from './Register.module.css'
+import logo from '../../../assets/images/logo_black.svg'
+import Button from '../../../components/fundamental/actions/button/Button'
+import useAuth from '../../../hooks/useAuth'
+import { useHistory } from 'react-router'
+import axios from '../../../axios'
+
+export default function Register() {
+    const [auth, setAuth] = useAuth()
+    const history = useHistory()
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confPassword, setConfPassword] = useState('')
+    const [userName, setUserName] = useState('')
+
+    const samePasswords = (pass, confPass) => {
+      if (pass === confPass) {
+        return true
+      } else {
+        return false
+      }
+    }
+
+    const submit = async e => {
+      e.preventDefault()
+
+      if(!samePasswords(password, confPassword)){
+        console.log("Error, different passwords")
+      }
+    }
+
+    return (
+        <div className={styles.backgroundContainer}>
+            <div className={`${styles.loginContainer} container d-flex flex-row p-4`}>
+                <div className={`${styles.formContainer} container flex-column`}>
+                    <div className={`${styles.logoContainer}`} >
+                        <img 
+                            src={logo}
+                            className={`${logo} img-fluid `} />
+                    </div>
+                    <div className={`${styles.formLogin} align-self-end`}>
+                        <h2 className="mt-3">Create Account</h2>
+                        <form>
+                        <div className="justify-content-center">
+                            <input className="form-control mt-3" onChange={setUserName} placeholder="User Name"></input>
+                            <input className="form-control mt-3" onChange={setEmail} placeholder="Email"></input>
+                            <input className="form-control mt-3" onChange={setPassword} placeholder="Password"></input>
+                            <input className="form-control mt-3 mb-3" onChange={setConfPassword} placeholder="Password"></input>
+                            <div className="d-flex mb-3 justify-content-center">
+                            <Button>Register</Button>
+                            </div>
+                        </div>
+                        </form>
+                        <div className={`${styles.loginFooter} d-flex flex-row justify-content-center align-items-center `}>
+                            <h4 className="p-2">Already have account?</h4>
+                            <a className="p-2" href="login">Log in.</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        )
+}
