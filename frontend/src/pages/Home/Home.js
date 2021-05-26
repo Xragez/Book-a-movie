@@ -7,7 +7,7 @@ export default function Home (){
         <div>
         <Header/>
         <Movies sortBy="popularity.desc" title="Most Popular"/>
-        <Movies sortBy="vote_average.desc" title="Top Rated"/>
+        <Movies sortBy="vote_average.desc" title="Top Rated" vote_count="1000"/>
         </div>
     ); 
 }
