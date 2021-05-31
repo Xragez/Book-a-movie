@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,9 +18,23 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
-    public function __construct(ManagerRegistry $registry)
+    private $encoder;
+
+    public function __construct(ManagerRegistry $registry, UserPasswordEncoderInterface $encoder)
     {
         parent::__construct($registry, User::class);
+        $this->encoder = $encoder;
+    }
+
+    public function createNewUser($data){
+        $user = new User();
+        $user->setEmail($data['email'])
+            ->setPassword($this->encoder->encodePassword($user, $data['password']))
+            ->setUsername($data['username']);
+        $this->_em->persist($user);
+        $this->_em->flush();
+
+        return $user;
     }
 
     /**
@@ -35,6 +50,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->persist($user);
         $this->_em->flush();
     }
+
+
 
     // /**
     //  * @return User[] Returns an array of User objects

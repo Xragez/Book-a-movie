@@ -13,10 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ApiResource(
- *     normalizationContext={"groups"={"read"}},
- *     denormalizationContext={"groups"={"write"}},
- * )
+ * @ApiResource()
  * @UniqueEntity(fields={"username"})
  * @UniqueEntity(fields={"email"})
  * @ORM\Table(name="`user`")
@@ -32,7 +29,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"read", "write"})
      * @Assert\NotBlank()
      * @Assert\Email()
      */
@@ -46,13 +42,11 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Groups({"read","write"})
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Groups({"read", "write"})
      * @Assert\NotBlank()
      */
     private $username;
