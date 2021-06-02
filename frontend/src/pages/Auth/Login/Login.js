@@ -31,7 +31,6 @@ export default function Login() {
             console.log('axios error', ex)
         }
     }
-    console.log(auth)
     if (auth) history.push('/home')
 
     return (
