@@ -44,6 +44,8 @@ export default function Register() {
 
     }
 
+    if (auth) history.push('/home')
+
     return (
         <div className={styles.backgroundContainer}>
             <div className={`${styles.loginContainer} container d-flex flex-row p-4`}>

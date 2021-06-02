@@ -26,6 +26,7 @@ export default function Login() {
             setAuth({
                 token: token
             })
+        history.push('/home')
         } catch (ex) {
             console.log('axios error', ex)
         }
