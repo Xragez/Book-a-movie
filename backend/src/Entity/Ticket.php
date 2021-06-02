@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TicketRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=TicketRepository::class)
+ * @ApiResource()
  */
 class Ticket
 {
@@ -20,7 +22,7 @@ class Ticket
     /**
      * @ORM\Column(type="integer")
      */
-    private $movieId;
+    private $showTimeId;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -28,33 +30,35 @@ class Ticket
     private $seats;
 
     /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $date;
-
-    /**
-     * @ORM\Column(type="string", length=10)
-     */
-    private $hour;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=ShowTime::class, inversedBy="tickets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ShowTimeId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="ticketsId")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $userId;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getMovieId(): ?int
+    public function getShowTimeId(): ?int
     {
-        return $this->movieId;
+        return $this->showTimeId;
     }
 
-    public function setMovieId(int $movieId): self
+    public function setShowTimeId(int $showTimeId): self
     {
-        $this->movieId = $movieId;
+        $this->showTimeId = $showTimeId;
 
         return $this;
     }
@@ -71,30 +75,6 @@ class Ticket
         return $this;
     }
 
-    public function getDate(): ?string
-    {
-        return $this->date;
-    }
-
-    public function setDate(string $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    public function getHour(): ?string
-    {
-        return $this->hour;
-    }
-
-    public function setHour(string $hour): self
-    {
-        $this->hour = $hour;
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -103,6 +83,18 @@ class Ticket
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(?User $userId): self
+    {
+        $this->userId = $userId;
 
         return $this;
     }

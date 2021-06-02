@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -50,6 +52,16 @@ class User implements UserInterface
      * @Assert\NotBlank()
      */
     private $username;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Ticket::class, mappedBy="userId")
+     */
+    private $ticketsId;
+
+    public function __construct()
+    {
+        $this->ticketsId = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -135,6 +147,36 @@ class User implements UserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ticket[]
+     */
+    public function getTicketsId(): Collection
+    {
+        return $this->ticketsId;
+    }
+
+    public function addTicketsId(Ticket $ticketsId): self
+    {
+        if (!$this->ticketsId->contains($ticketsId)) {
+            $this->ticketsId[] = $ticketsId;
+            $ticketsId->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTicketsId(Ticket $ticketsId): self
+    {
+        if ($this->ticketsId->removeElement($ticketsId)) {
+            // set the owning side to null (unless already changed)
+            if ($ticketsId->getUserId() === $this) {
+                $ticketsId->setUserId(null);
+            }
+        }
 
         return $this;
     }

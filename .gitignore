@@ -116,4 +116,7 @@ fabric.properties
 .history
 .ionide
 
+#Postgres data
+postgres
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,phpstorm

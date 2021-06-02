@@ -30,6 +30,8 @@ export default function Login() {
             console.log('axios error', ex)
         }
     }
+    console.log(auth)
+    if (auth) history.push('/home')
 
     return (
         <div className={styles.backgroundContainer}>
@@ -49,8 +51,8 @@ export default function Login() {
                         <h2 className="mt-3">Sign in!</h2>
                         <form onSubmit={submit}>
                         <div className="justify-content-center">
-                            <input className="form-control mt-5" onChange={setEmail} placeholder="Email"></input>
-                            <input className="form-control mt-3 mb-3" onChange={setPassword} placeholder="Password"></input>
+                            <input className="form-control mt-5" onChange={(e) => setEmail(e.target.value)} placeholder="Email"></input>
+                            <input className="form-control mt-3 mb-3" onChange={(e) => setPassword(e.target.value)} placeholder="Password"></input>
                             <div className="d-flex mb-3 justify-content-center">
                             <Button>Login</Button>
                             </div>

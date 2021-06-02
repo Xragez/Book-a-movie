@@ -25,9 +25,10 @@ class AuthController extends AbstractController
 
     public function register(Request $request)
     {
-        $newUserData['email']    = $request->get('email');
-        $newUserData['password'] = $request->get('password');
-        $newUserData['username'] = $request->get('username');
+        $data = json_decode($request->getContent(), true);
+        $newUserData['email'] = $data['email'];
+        $newUserData['password'] = $data['password'];
+        $newUserData['username'] = $data['username'];
 
         $user = $this->usersRepository->createNewUser($newUserData);
 

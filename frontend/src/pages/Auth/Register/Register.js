@@ -26,9 +26,22 @@ export default function Register() {
     const submit = async e => {
       e.preventDefault()
 
-      if(!samePasswords(password, confPassword)){
+      if(password != confPassword){
+        console.log(password)
+        console.log(confPassword)
         console.log("Error, different passwords")
       }
+      try {
+        let res = await axios.post('/register', {
+            email: email,
+            password: password,
+            username: userName
+        })
+        history.push('/login')
+      }catch (ex) {
+        console.log('axios error', ex)
+     }
+
     }
 
     return (
@@ -42,12 +55,12 @@ export default function Register() {
                     </div>
                     <div className={`${styles.formLogin} align-self-end`}>
                         <h2 className="mt-3">Create Account</h2>
-                        <form>
+                        <form onSubmit={submit}>
                         <div className="justify-content-center">
-                            <input className="form-control mt-3" onChange={setUserName} placeholder="User Name"></input>
-                            <input className="form-control mt-3" onChange={setEmail} placeholder="Email"></input>
-                            <input className="form-control mt-3" onChange={setPassword} placeholder="Password"></input>
-                            <input className="form-control mt-3 mb-3" onChange={setConfPassword} placeholder="Password"></input>
+                            <input type="text" className="form-control mt-3" onChange={(e) => setUserName(e.target.value)} placeholder="User Name"></input>
+                            <input type="text" className="form-control mt-3" onChange={(e) => setEmail(e.target.value)} placeholder="Email"></input>
+                            <input type="password" className="form-control mt-3" onChange={(e) => setPassword(e.target.value)} placeholder="Password"></input>
+                            <input type="password" className="form-control mt-3 mb-3" onChange={(e) => setConfPassword(e.target.value)} placeholder="Password"></input>
                             <div className="d-flex mb-3 justify-content-center">
                             <Button>Register</Button>
                             </div>

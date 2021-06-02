@@ -29,6 +29,10 @@
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/laminas/laminas-code" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/laminas/laminas-eventmanager" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/laminas/laminas-zendframework-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/lcobucci/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/lcobucci/jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/lexik/jwt-authentication-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/namshi/jose" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/nelmio/cors-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/phpdocumentor/reflection-common" />
