@@ -17,14 +17,14 @@ export default function MovieCard (props){
       <div className="flex-column">
           <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} className={styles.poster}/>
       </div>
-      <div className="m-4">
+      <div className="ml-4 mr-4 mt-4">
           <h2>{movie.title}</h2>
         <p>
           {movie.runtime} min  
         </p>
         <p>
           {genres.map( genre =>
-            <span>{genre.name + " "}</span>
+            <span className="badge badge-secondary mr-2">{genre.name + " "}</span>
             )}
         </p>
         <p>

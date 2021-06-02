@@ -12,21 +12,24 @@ export default function MovieCardBasic (props){
   })
 
   return (
-    <Link to={`/movie/${movie.id}`}>
-      <div className={`d-flex flex-row card m-3 p-3 ${styles.card}`}>
-        <div className="flex-column">
-            <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} className={styles.poster}/>
+    
+    <div className={`card m-3 ${styles.card}`}>
+      <Link to={`/movie/${movie.id}`}>
+        <div className="d-flex flex-row m-3" >
+          <div className="flex-column">
+              <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} className={styles.poster}/>
+          </div>
+          <div className="m-4">
+              <h4>{movie.title}</h4>
+            <p>
+              Release date: {movie.release_date}
+            </p>
+            <p>
+              Rating: {movie.vote_average}/10 {movie.vote_count} votes
+            </p>
+          </div>
         </div>
-        <div className="m-4">
-            <h4>{movie.title}</h4>
-          <p>
-            Release date: {movie.release_date}
-          </p>
-          <p>
-            Rating: {movie.vote_average}/10 {movie.vote_count} votes
-          </p>
-        </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   ); 
 }
