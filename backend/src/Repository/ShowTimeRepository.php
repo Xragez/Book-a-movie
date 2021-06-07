@@ -18,7 +18,6 @@ class ShowTimeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, ShowTime::class);
     }
-
     // /**
     //  * @return ShowTime[] Returns an array of ShowTime objects
     //  */
