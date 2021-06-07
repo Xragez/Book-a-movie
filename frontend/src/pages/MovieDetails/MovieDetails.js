@@ -4,6 +4,7 @@ import styles from './MovieDetails.module.css';
 import axios from "axios";
 import Header from '../../components/Header/Header';
 import MovieCard from '../../components/Movies/MovieCard/MovieCard';
+import Tickets from '../../components/Tickets/Tickets';
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -37,7 +38,8 @@ useEffect(() => {
           style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`
           }}>
           <Header/>
-            <MovieCard movie={movie} genres={genres}></MovieCard>
+          <MovieCard movie={movie} genres={genres}></MovieCard>
+          <Tickets movieId={id}></Tickets>
         </div>
     ); 
 }
