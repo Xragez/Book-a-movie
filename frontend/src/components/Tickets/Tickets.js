@@ -4,6 +4,7 @@ import axios from "../../axios";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import useAuth from '../../hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 export default function Tickets (props){
 
@@ -58,17 +59,25 @@ export default function Tickets (props){
           minDate={new Date()}
           >
           </Calendar>
-          <div className="m-1">
+          <div className="m-1 ml-3">
+            <h3>movie screenings on 09.08.2021</h3>
           {showTimes.map(showTime =>
             date.toISOString().slice(0, 10) == showTime.date.slice(0, 10) ? 
-            <h3><span className="badge badge-warning m-1 btn"> {showTime.hour.slice(11, 16)}</span> </h3>
+            <Link key={showTime.id} to={`/checkout/${props.movieId}/${showTime.id}`}>
+              {console.log(date.toISOString(false))}
+              <h3>
+                <span className="badge badge-warning m-1 btn"> 
+                  {showTime.hour.slice(11, 16)}
+                </span>
+              </h3>
+            </Link>
             : 
             null
           )}
           </div>
         </>
         :
-        <span>Log in or sign up to buy a tickets</span>
+        <span>Log in or sign up to buy tickets</span>
       }
     </div>
   ); 

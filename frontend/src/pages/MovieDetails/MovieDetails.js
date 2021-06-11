@@ -19,18 +19,18 @@ export default function MovieDetails (){
     url: `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
   };
 
-const fetchMovie = async () => {   
-    axios.request(options).then(function (response) {
-        setMovie(response.data);
-        setGenres(response.data.genres)
-    }).catch(function (error) {
-        console.error(error);
-    });
-}
+  const fetchMovie = async () => {   
+      axios.request(options).then(function (response) {
+          setMovie(response.data);
+          setGenres(response.data.genres)
+      }).catch(function (error) {
+          console.error(error);
+      });
+  }
 
-useEffect(() => {
-  fetchMovie()
-}, [])
+  useEffect(() => {
+    fetchMovie()
+  }, [])
 
     return (
         <div 

@@ -15,6 +15,7 @@ import {
   Redirect
 } from "react-router-dom";
 import Register from './pages/Auth/Register/Register';
+import Checkout from './pages/Checkout/Checkout';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/home" component={Home}/>
             <Route path="/movie/:id" component={MovieDetails}/>
             <Route path='/search/:q?' component={Search} />
+            <Route path='/checkout/:movieid/:showtimeid' component={Checkout}/>
             <Route component={NotFound} />
           </Switch>
         </Router>
