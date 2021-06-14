@@ -45,9 +45,10 @@ class ShowTime
     private $tickets;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\Column(type="json", nullable=true)
      */
     private $takenSeats = [];
+
 
     public function __construct()
     {
@@ -136,4 +137,5 @@ class ShowTime
 
         return $this;
     }
+
 }
