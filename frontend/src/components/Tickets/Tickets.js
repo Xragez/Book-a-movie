@@ -60,7 +60,7 @@ export default function Tickets (props){
           >
           </Calendar>
           <div className="m-1 ml-3">
-            <h3>movie screenings on 09.08.2021</h3>
+            <h3>movie screenings on {date.toISOString().slice(0, 10)}</h3>
           {showTimes.map(showTime =>
             date.toISOString().slice(0, 10) == showTime.date.slice(0, 10) ? 
             <Link key={showTime.id} to={`/checkout/${props.movieId}/${showTime.id}`}>

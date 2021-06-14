@@ -33,9 +33,18 @@ function Seat(props){
 
 
   return (
-    <div className={`${styles.seat} btn ${state}`} onClick={onClick} style={changeStyle(state)}>
-      {props.id}
-    </div>
+    <>
+      {props.id === "" ?
+      <div className={styles.seat}>
+      
+      </div>
+      :
+      <div className={`${styles.seat} btn ${state}`} onClick={onClick} style={changeStyle(state)}>
+        {props.id}
+      </div>
+      }
+      
+    </>
   );
 }
 
