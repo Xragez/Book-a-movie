@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210602121005 extends AbstractMigration
+final class Version20210614130652 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -23,7 +23,7 @@ final class Version20210602121005 extends AbstractMigration
         $this->addSql('CREATE SEQUENCE show_time_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE ticket_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE "user_id_seq" INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE show_time (id INT NOT NULL, movie_id INT NOT NULL, date DATE NOT NULL, hour TIME(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE show_time (id INT NOT NULL, movie_id INT NOT NULL, date DATE NOT NULL, hour TIME(0) WITHOUT TIME ZONE NOT NULL, taken_seats JSON DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE ticket (id INT NOT NULL, show_time_id_id INT NOT NULL, user_id_id INT NOT NULL, show_time_id INT NOT NULL, seats VARCHAR(255) NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_97A0ADA334DD7B82 ON ticket (show_time_id_id)');
         $this->addSql('CREATE INDEX IDX_97A0ADA39D86650F ON ticket (user_id_id)');
