@@ -41,6 +41,11 @@ class ShowTime
      */
     private $tickets;
 
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $takenSeats = [];
+
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
@@ -113,6 +118,18 @@ class ShowTime
                 $ticket->setShowTimeId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTakenSeats(): ?array
+    {
+        return $this->takenSeats;
+    }
+
+    public function setTakenSeats(?array $takenSeats): self
+    {
+        $this->takenSeats = $takenSeats;
 
         return $this;
     }
