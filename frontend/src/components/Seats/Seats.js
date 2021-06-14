@@ -8,9 +8,7 @@ const API_KEY = process.env.REACT_APP_API_KEY
 
 function Seats(props){
 
-  const [takenSeats, setTakenSeats] = useState(
-    ["A2", "B5"]
-  )
+  const [takenSeats, setTakenSeats] = useState([])
 
   const [seats, setSeats] = useState([
     ["A1", "A2", "A3", "A4", "A5", "A6", "", "","A7", "A8", "A9", "A10", "A11"], 
@@ -26,6 +24,10 @@ function Seats(props){
     }
     return true
   }
+
+  useEffect(() => {
+    setTakenSeats(props.takenSeats)
+  }, [])
 
   return (
     <div className="mt-5">

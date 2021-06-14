@@ -63,7 +63,7 @@ export default function Checkout (){
           <div className={`${styles.screen}`}>SCREEN</div>
         </div>
         <div>
-          <Seats></Seats>
+          <Seats ></Seats>
         </div>
       </div>
     </div>
