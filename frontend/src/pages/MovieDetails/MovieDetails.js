@@ -4,6 +4,7 @@ import styles from './MovieDetails.module.css';
 import axios from "axios";
 import Header from '../../components/Header/Header';
 import MovieCard from '../../components/Movies/MovieCard/MovieCard';
+import Tickets from '../../components/Tickets/Tickets';
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -18,18 +19,18 @@ export default function MovieDetails (){
     url: `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
   };
 
-const fetchMovie = async () => {   
-    axios.request(options).then(function (response) {
-        setMovie(response.data);
-        setGenres(response.data.genres)
-    }).catch(function (error) {
-        console.error(error);
-    });
-}
+  const fetchMovie = async () => {   
+      axios.request(options).then(function (response) {
+          setMovie(response.data);
+          setGenres(response.data.genres)
+      }).catch(function (error) {
+          console.error(error);
+      });
+  }
 
-useEffect(() => {
-  fetchMovie()
-}, [])
+  useEffect(() => {
+    fetchMovie()
+  }, [])
 
     return (
         <div 
@@ -37,7 +38,8 @@ useEffect(() => {
           style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`
           }}>
           <Header/>
-            <MovieCard movie={movie} genres={genres}></MovieCard>
+          <MovieCard movie={movie} genres={genres}></MovieCard>
+          <Tickets movieId={id}></Tickets>
         </div>
     ); 
 }

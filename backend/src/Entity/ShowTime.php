@@ -7,10 +7,13 @@ use App\Repository\ShowTimeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiFilter;
 
 /**
  * @ORM\Entity(repositoryClass=ShowTimeRepository::class)
  * @ApiResource()
+ * @ApiFilter(SearchFilter::class, properties={"movieId": "exact", "date": "partial"})
  */
 class ShowTime
 {
