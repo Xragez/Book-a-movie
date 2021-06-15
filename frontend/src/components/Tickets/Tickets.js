@@ -34,18 +34,14 @@ export default function Tickets (props){
     //console.log(newShowTimes)      
   }
 
-  const options = {
-    method: 'GET',
-    url: ``
-  };
-
   const onDateChange = (date) => {
-    setDate(date)
+    const d = new Date(date)
+    d.setHours(d.getHours()+2)
+    setDate(d)
   }
 
   useEffect(() => {
     fetchShowTimes()
-    filterByDate()
   }, [date])
 
   return (
@@ -64,7 +60,6 @@ export default function Tickets (props){
           {showTimes.map(showTime =>
             date.toISOString().slice(0, 10) == showTime.date.slice(0, 10) ? 
             <Link key={showTime.id} to={`/checkout/${props.movieId}/${showTime.id}`}>
-              {console.log(date.toISOString(false))}
               <h3>
                 <span className="badge badge-warning m-1 btn"> 
                   {showTime.hour.slice(11, 16)}

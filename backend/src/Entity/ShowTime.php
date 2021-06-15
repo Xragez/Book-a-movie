@@ -46,6 +46,7 @@ class ShowTime
 
     /**
      * @ORM\Column(type="json", nullable=true)
+     *
      */
     private $takenSeats = [];
 

@@ -8,7 +8,8 @@ const API_KEY = process.env.REACT_APP_API_KEY
 
 function Seats(props){
 
-  const [takenSeats, setTakenSeats] = useState([])
+  const [takenSeats, setTakenSeats] = useState(props.takenSeats)
+  const [selectedSeats, setSelectedSeats] = useState([])
 
   const [seats, setSeats] = useState([
     ["A1", "A2", "A3", "A4", "A5", "A6", "", "","A7", "A8", "A9", "A10", "A11"], 
@@ -26,17 +27,18 @@ function Seats(props){
   }
 
   useEffect(() => {
+    console.log(props.takenSeats)
     setTakenSeats(props.takenSeats)
-  }, [])
+  }, [props])
 
   return (
     <div className="mt-5">
-      {
+      {takenSeats ?
       seats.map( row => 
         <div className="d-flex flex-row m-2">
           {row.map(seat =>
             <div className="mr-2">
-              {isSeatAvailable(seat) ?
+              {takenSeats && isSeatAvailable(seat) ?
               <Seat id ={seat} state="available"></Seat>
               :
               <Seat id ={seat} state="unavailable"></Seat>}
@@ -44,6 +46,8 @@ function Seats(props){
           )}
         </div>
       )
+      :
+      null
       }
     </div>  
   );

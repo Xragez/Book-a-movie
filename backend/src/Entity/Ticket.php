@@ -19,10 +19,6 @@ class Ticket
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $showTimeId;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -51,17 +47,6 @@ class Ticket
         return $this->id;
     }
 
-    public function getShowTimeId(): ?int
-    {
-        return $this->showTimeId;
-    }
-
-    public function setShowTimeId(int $showTimeId): self
-    {
-        $this->showTimeId = $showTimeId;
-
-        return $this;
-    }
 
     public function getSeats(): ?string
     {

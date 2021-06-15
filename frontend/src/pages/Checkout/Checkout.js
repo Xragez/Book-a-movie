@@ -63,7 +63,8 @@ export default function Checkout (){
           <div className={`${styles.screen}`}>SCREEN</div>
         </div>
         <div>
-          <Seats ></Seats>
+          <Seats takenSeats={showTime.takenSeats}></Seats>
+          <button className="btn btn-dark float-right mt-3">Buy</button>
         </div>
       </div>
     </div>
